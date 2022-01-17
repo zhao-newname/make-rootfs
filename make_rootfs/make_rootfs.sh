@@ -23,8 +23,9 @@ build_rootfs()
 	apt update
 	#apt upgrade
 	sync
-	DEBIAN_FRONTEND=noninteractive apt-get install  -y iproute2 net-tools gcc make git vim file sysstat libssl-dev tree pciutils util-linux iputils-ping
-	DEBIAN_FRONTEND=noninteractive apt-get install  -y sudo systemd systemd-sysv gdisk parted u-boot-tools linux-base initramfs-tools 
+	DEBIAN_FRONTEND=noninteractive apt-get install  -y iproute2 net-tools gcc \
+	make git vim file sysstat libssl-dev tree pciutils util-linux iputils-ping \
+	sudo systemd systemd-sysv gdisk parted u-boot-tools linux-base initramfs-tools 
 	passwd root
 EOF
 
@@ -43,7 +44,7 @@ EOF
 
 pack_img()
 {
-	cd ..
+#	cd ..
 	qemu-img create rootfs.ext4 10G
 	mkfs.ext4 rootfs.ext4
 	
@@ -55,5 +56,5 @@ pack_img()
 	sudo umount rootfs
 }
 
-build_rootfs
+#build_rootfs
 pack_img
