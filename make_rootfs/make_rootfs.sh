@@ -1,5 +1,6 @@
 ## http://cdimage.ubuntu.com/ubuntu-base/releases/20.04/release/ubuntu-base-20.04.3-base-amd64.tar.gz
 #!/bin/bash
+set -x
 build_rootfs()
 {
 	FILE_NAME="ubuntu-base-20.04.1-base-amd64.tar.gz"
@@ -12,7 +13,7 @@ build_rootfs()
 	cd amd64
 	mount --bind /dev ./dev
 	mount --bind /proc ./proc
-	mount --bind /proc ./proc
+	mount --bind /sys ./sys
 	 
 	cp /etc/resolv.conf ./etc/resolv.conf
 	sed -i 's/archive.ubuntu.com/mirrors.aliyun.com/g' ./etc/apt/sources.list
